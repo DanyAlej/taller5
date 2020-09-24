@@ -40,3 +40,15 @@ Scenario Outline: Registration failed empty fields
       | dany             | dany     | dany@gmail.com    | Universidad de los Andes | no       | Administración |            | yes        | "Ingresa una contr"  |
       | dany             | dany     | dany@gmail.com    | Universidad de los Andes | no       | Administración | danlsdfy6  |            | "Debes aceptar"  |
 
+Scenario Outline: Registration success
+
+  Given I go to losestudiantes home screen
+    When I open the 'ingresar' screen
+    And Put input with <name> with <lastname> with <email> with <university> with <maestria> with <undergrad> with <password> and <conditions>
+    And I try to register
+    Then I expect to see popup <success>
+
+    Examples:
+      | name             | lastname | email             | university               | maestria | undergrad      | password   | conditions | success              |
+      | dany             | dany     | dddsany@gmail.com    | Universidad de los Andes | no       | Administración | dfskdfjsay6       | yes        | "Verifica tu correo y activa"  |
+
